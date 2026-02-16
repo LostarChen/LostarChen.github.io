@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Saros CharacterController</title>
+    <link rel="stylesheet" href="css/characterController.css">
+</head>
+
+<body>
+    <script type="module">
+
+        import { initializeApp } from
+            "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+        import { getDatabase, ref, push } from
+            "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC1Kjr3cvMNQAQLdQhn5JKOXmKZ59KUp1s",
+            authDomain: "saros-a89e0.firebaseapp.com",
+            databaseURL: "https://saros-a89e0-default-rtdb.firebaseio.com/",
+            projectId: "saros-a89e0",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        let charName;
+        let charImg;
+
+        window.addEventListener("DOMContentLoaded", () => {
+
+            const params = new URLSearchParams(window.location.search);
+            charName = params.get('variableName');
+            charImg = params.get('variableImage');
+
+            document.getElementById('valueDisplay').innerText =
+                charName || "No Name";
+
+            if (charImg) {
+                document.getElementById('imgDisplay').src = charImg;
+            }
+
+        });
+
+
+        function sendData(data) {
+
+            const payload = {
+                playerName: charName,
+                ...data,
+                timestamp: Date.now()
+            };
+
+            push(ref(db, "controllerInputs"), payload);
+
+            console.log("Sent to Firebase:", payload);
+        }
+
+
+        window.MoveDirection = (direction) => {
+            sendData({ direction });
+        };
+
+        window.bulletShooting = () => {
+            sendData({ bullet: true });
+        };
+
+        window.stamp = () => {
+            sendData({ stamp: true });
+        };
+
+        window.Drawing = () => {
+            sendData({ draw: true });
+        };
+
+    </script>
+
+    <table align="center" width="50%" border="0" cellpadding="0" cellspacing="10">
+        <tr>
+            <td>
+                <p class="player-name">Player Name: <span id="valueDisplay"></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <map name="controller">
+                        <area shape="rect" coords="261,468,323,548" onclick="MoveDirection('up')" target="_blank"
+                            alt="HTML" />
+
+                        <area shape="rect" coords="261,612,323,692" onclick="MoveDirection('down')" target="_blank"
+                            alt="HTML" />
+
+                        <area shape="rect" coords="180,549,269,611" onclick="MoveDirection('left')" target="_blank"
+                            alt="HTML" />
+
+                        <area shape="rect" coords="315,549,404,611" onclick="MoveDirection('right')" target="_blank"
+                            alt="HTML" />
+
+                        <area shape="rect" coords="270,549,314,611" onclick="MoveDirection('origin')" target="_blank"
+                            alt="HTML" />
+
+                        <area shape="rect" coords="432,459,530,557" onclick="bulletShooting()" target="_blank"
+                            alt="HTML" />
+
+                        <area shape="rect" coords="432,585,530,683" onclick="stamp()" target="_blank" alt="HTML" />
+
+                        <area shape="rect" coords="117,396,188,467" onclick="Drawing()" target="_blank" alt="HTML" />
+                    </map>
+                    <img usemap="#controller" src="website/Controller_resized.jpg" class="img1">
+                    <img id="imgDisplay" src="character/new/IronCabinet.png" class="img2" width="250px">
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

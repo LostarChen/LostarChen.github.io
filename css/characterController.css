@@ -1,0 +1,54 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body {
+    background-image: url("../website/Starry sky.jpg") ;
+    background-attachment: fixed;
+    background-size: cover;
+    text-align: center;
+    touch-action: manipulation;
+}
+div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	
+}
+img {
+	cursor: default;
+	}
+area {
+	cursor: pointer;
+	}
+
+.img1 {
+    width: 100%;
+    max-width: 600px;
+}
+
+.img2 {
+    position: absolute;
+    width: 250px;
+}
+.button-container button{
+	margin:0px 50px 0px;
+	padding:40px 200px 40px;
+	font-size: 16px;
+}
+.button-setting{
+	background-image: url("website/websiteUI_button.png");
+	background-size: cover;
+	border-radius: 20px;
+}
+.color-but{
+	border: 1px;
+	height:50px;
+	width:50px;
+	cursor:pointer;
+}
+.player-name{
+	color:white;
+}
