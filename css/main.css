@@ -1,0 +1,85 @@
+
+body{
+	margin:0px;
+	text-align: center;
+	margin: auto; 
+	display: flex;  
+	justify-content: center;
+	background-repeat: repeat;
+	background-image:url("website/Starry sky.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #111111;
+	color:white;
+}
+button{
+	background: none;
+	border: none;
+	padding: 0;
+	outline: none;
+	cursor: pointer;
+}
+
+.backgroundImg{ 
+	padding: 5px;
+	max-width: 100%;
+	height: auto;
+}
+.button-container{
+	display: flex;
+	justify-content: center;  /* 水平置中 */
+	align-items: center;
+}
+.button-container button{
+	margin:0px 50px 0px;
+	padding:15px 75px 15px;
+	font-size: 20px;
+}
+.button-setting{
+	gap: 20px;                /* 按鈕間距 */
+	margin-top: 20px;
+	background-size: cover;
+	border-radius: 20px;
+}
+.home-btn{
+	background-image: url("website/Home.png");
+}
+
+.story-btn{
+	background-image: url("website/Story.png");
+}
+img{ 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-webkit-touch-callout: none;
+	background:transparent;
+}
+.image-row{
+	display: flex;
+	align-items: center;   /* 垂直置中 */
+	justify-content: center;
+	gap: 20px;             /* 物件間距 */
+	margin-top: 20px;
+}
+
+.arrow-btn{
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+.arrow-btn img{
+	display: block;
+}
+article{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none; 
+		-ms-user-select: none;
+			user-select: none;
+}
