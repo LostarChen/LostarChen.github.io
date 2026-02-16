@@ -42,11 +42,11 @@ button{
 	border-radius: 20px;
 }
 .home-btn{
-	background-image: url("website/Home.png");
+	background-image: url("../website/Home.png");
 }
 
 .story-btn{
-	background-image: url("website/Story.png");
+	background-image: url("../website/Story.png");
 }
 img{ 
 	user-select: none;
