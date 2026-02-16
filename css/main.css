@@ -6,7 +6,7 @@ body{
 	display: flex;  
 	justify-content: center;
 	background-repeat: repeat;
-	background-image:url("website/Starry sky.jpg");
+	background-image:url("../website/Starry sky.jpg");
 	background-attachment: fixed;
 	background-size: cover;
 	background-color: #111111;
