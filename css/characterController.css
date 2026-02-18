@@ -1,54 +1,125 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
+html,
 body {
-    background-image: url("../website/Starry sky.jpg") ;
-    background-attachment: fixed;
-    background-size: cover;
-    text-align: center;
-    touch-action: manipulation;
+	margin: 0;
+	padding: 0;
+	height: 100%;
 }
-div{
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
+body {
+	background-image: url("../website/Starry sky.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #000000;
+	text-align: center;
+	touch-action: manipulation;
+}
+
+div {
 	padding: 0px;
-	
 }
+
 img {
 	cursor: default;
-	}
+}
+
 area {
 	cursor: pointer;
-	}
-
-.img1 {
-    width: 100%;
-    max-width: 600px;
 }
 
-.img2 {
-    position: absolute;
-    width: 250px;
+button {
+	background: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
 }
-.button-container button{
-	margin:0px 50px 0px;
-	padding:40px 200px 40px;
+.InterfaceWrapper{
+	position: relative;
+	width:100%;
+}
+.imgInterface {
+	display: block;
+	width:100%;
+}
+.charImg {
+    position: absolute;   /* 關鍵 */
+    top: 10%;        /* 用百分比 */
+    right: 5%;      /* 用百分比 */
+    width: 20%;      /* 用百分比 */
+    z-index: 10;           /* 在上面 */
+}
+.LineBtnImg {
+	margin-top: 100px;
+	max-width: 600px;
+}
+
+.button-container button {
+	margin: 0px 50px 0px;
+	padding: 40px 200px 40px;
 	font-size: 16px;
 }
-.button-setting{
-	background-image: url("website/websiteUI_button.png");
+
+.button-setting {
+	background-image: url("../website/websiteUI_button.png");
 	background-size: cover;
 	border-radius: 20px;
 }
-.color-but{
+
+.color-but {
 	border: 1px;
-	height:50px;
-	width:50px;
-	cursor:pointer;
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
 }
-.player-name{
-	color:white;
+
+.player-name {
+	color: white;
+}
+.movePad {
+    position: relative;
+    width: 40%;      /* 整個方向鍵大小 */
+    height: 80%;
+    margin: 0 auto;
+}
+
+.move-btn {
+    position: absolute;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.move-btn img {
+    width:100%;
+}
+.up {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.down {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.left {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.stampBtn{
+	left:20%
 }

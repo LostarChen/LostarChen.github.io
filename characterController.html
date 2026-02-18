@@ -8,6 +8,41 @@
 </head>
 
 <body>
+    <div class="InterfaceWrapper">
+
+        <img class="imgInterface" src="website/Controller Interface.png">
+        <img class="charImg" id="imageDisplay" src="character/new/IronCabinet.png">
+
+    </div>
+    <br>
+    <span id="valueDisplay"></span>
+    <div class="movePad">
+
+        <button class="move-btn up">
+            <img src="website/MovementBtnUp.png">
+        </button>
+
+        <button class="move-btn left">
+            <img src="website/MovementBtnLeft.png">
+        </button>
+
+        <button class="move-btn center">
+            <img src="website/MovementBtnCenter.png">
+        </button>
+
+        <button class="move-btn right">
+            <img src="website/MovementBtnRight.png">
+        </button>
+
+        <button class="move-btn down">
+            <img src="website/MovementBtnDown.png">
+        </button>
+
+    </div>
+    <img class="stampBtn" src="website/Stamp Btn.png">
+    <img src="website/ShootBtn.png"><br>
+    <button class="LineBtn"><img class="LineBtnImg" src="website/LineBtn.png"></button>
+
     <script type="module">
 
         import { initializeApp } from
@@ -35,11 +70,14 @@
             charName = params.get('variableName');
             charImg = params.get('variableImage');
 
-            document.getElementById('valueDisplay').innerText =
-                charName || "No Name";
+            const valueDisplay = document.getElementById('valueDisplay');
+
+            if (valueDisplay) {
+                valueDisplay.innerText = charName || "No Name";
+            }
 
             if (charImg) {
-                document.getElementById('imgDisplay').src = charImg;
+                document.getElementById('imageDisplay').src = charImg;
             }
 
         });
@@ -58,10 +96,12 @@
             console.log("Sent to Firebase:", payload);
         }
 
-
-        window.MoveDirection = (direction) => {
-            sendData({ direction });
-        };
+        document.querySelectorAll(".move-btn")
+            .forEach(btn => {
+                btn.addEventListener("click", () => {
+                    MoveDirection(btn.dataset.direction);
+                });
+            });
 
         window.bulletShooting = () => {
             sendData({ bullet: true });
@@ -76,46 +116,6 @@
         };
 
     </script>
-
-    <table align="center" width="50%" border="0" cellpadding="0" cellspacing="10">
-        <tr>
-            <td>
-                <p class="player-name">Player Name: <span id="valueDisplay"></span></p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>
-                    <map name="controller">
-                        <area shape="rect" coords="261,468,323,548" onclick="MoveDirection('up')" target="_blank"
-                            alt="HTML" />
-
-                        <area shape="rect" coords="261,612,323,692" onclick="MoveDirection('down')" target="_blank"
-                            alt="HTML" />
-
-                        <area shape="rect" coords="180,549,269,611" onclick="MoveDirection('left')" target="_blank"
-                            alt="HTML" />
-
-                        <area shape="rect" coords="315,549,404,611" onclick="MoveDirection('right')" target="_blank"
-                            alt="HTML" />
-
-                        <area shape="rect" coords="270,549,314,611" onclick="MoveDirection('origin')" target="_blank"
-                            alt="HTML" />
-
-                        <area shape="rect" coords="432,459,530,557" onclick="bulletShooting()" target="_blank"
-                            alt="HTML" />
-
-                        <area shape="rect" coords="432,585,530,683" onclick="stamp()" target="_blank" alt="HTML" />
-
-                        <area shape="rect" coords="117,396,188,467" onclick="Drawing()" target="_blank" alt="HTML" />
-                    </map>
-                    <img usemap="#controller" src="website/Controller_resized.jpg" class="img1">
-                    <img id="imgDisplay" src="character/new/IronCabinet.png" class="img2" width="250px">
-                </div>
-            </td>
-        </tr>
-    </table>
-
 </body>
 
 </html>
