@@ -40,6 +40,13 @@ button {
 	display: block;
 	width:100%;
 }
+.player-name {
+	position: absolute;
+	font-size: 3vw;
+	top: 12%;
+	left:20%;
+	color: black;
+}
 .charImg {
     position: absolute;   /* 關鍵 */
     top: 10%;        /* 用百分比 */
@@ -71,16 +78,13 @@ button {
 	cursor: pointer;
 }
 
-.player-name {
-	color: white;
-}
+
 .movePad {
     position: relative;
     width: 40%;      /* 整個方向鍵大小 */
     height: 80%;
     margin: 0 auto;
 }
-
 .move-btn {
     position: absolute;
     background: transparent;
