@@ -47,6 +47,13 @@ button {
 	left:20%;
 	color: black;
 }
+.score{
+	position: absolute;
+	font-size: 3vw;
+	top:17%;
+	left:24%;
+	color:black;
+}
 .charImg {
     position: absolute;   /* 關鍵 */
     top: 10%;        /* 用百分比 */

@@ -12,6 +12,7 @@
 
         <img class="imgInterface" src="website/Controller Interface.png">
         <span class="player-name" id="valueDisplay"></span>
+        <span class="score"><p>0</p></span>
         <img class="charImg" id="imageDisplay" src="character/new/IronCabinet.png">
 
     </div>
@@ -93,7 +94,7 @@
                 timestamp: Date.now()
             };
 
-            push(ref(db, "controllerInputs"), payload);
+            push(ref(db, "User"), payload);
 
             console.log("Sent to Firebase:", payload);
         }
