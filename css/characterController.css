@@ -120,6 +120,19 @@ button {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.Controller{
+	position: relative;
+	width: 100%;      /* 整個方向鍵大小 */
+    height:100%;
+}
 .stampBtn{
-	left:20%
+	position: absolute;
+	bottom: 8%;
+    left: 8%;
+}
+.shootBtn{
+	position: absolute;
+	bottom: 8%;
+	right: 8%;
 }
