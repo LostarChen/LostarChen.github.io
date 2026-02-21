@@ -161,7 +161,9 @@
         
         function sendPlayerInfo(){
         
+          
           const playerName = document.getElementById("playerName").value;
+          const playerId = Date.now().toString();
           const selectedColor = document.getElementById("colorPicker").value;
         
           const hexColor = selectedColor.substring(1);
@@ -170,21 +172,21 @@
           const b = parseInt(hexColor.substring(4,6),16);
         
           const Player = {
-            playerName,
+            playerId: playerId,
+            playerName:playerName,
             charImg: myImage.src,
-            r,
-            g,
-            b,
-            timestamp: Date.now()
+            r:r,
+            g:g,
+            b:b,
           };
         
-          push(ref(db, "User"), Player);
+          push(ref(db, "User/"+playerName), Player);
         
           console.log("Sent to Firebase:", Player);
         
           
           window.location.href =
-            `https://lostarchen.github.io/characterController.html?variableName=${playerName}&variableImage=${myImage.src}`;
+            `https://lostarchen.github.io/characterController.html?variableId=${playerId}variableName=${playerName}&variableImage=${myImage.src}`;
             
         }
         

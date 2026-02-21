@@ -43,14 +43,14 @@ button {
 .player-name {
 	position: absolute;
 	font-size: 3vw;
-	top: 12%;
+	top: 14%;
 	left:20%;
 	color: black;
 }
 .score{
 	position: absolute;
 	font-size: 3vw;
-	top:17%;
+	top:19%;
 	left:24%;
 	color:black;
 }
@@ -103,30 +103,35 @@ button {
     width:100%;
 }
 .up {
+	width:25%;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .down {
+	width:25%;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .left {
+	width:25%;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .right {
+	width:25%;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .center {
+	width:40%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

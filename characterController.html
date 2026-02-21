@@ -12,7 +12,9 @@
 
         <img class="imgInterface" src="website/Controller Interface.png">
         <span class="player-name" id="valueDisplay"></span>
-        <span class="score"><p>0</p></span>
+        <span class="score">
+            <p>0</p>
+        </span>
         <img class="charImg" id="imageDisplay" src="character/new/IronCabinet.png">
 
     </div>
@@ -20,11 +22,11 @@
     <div class="Controller">
         <div class="movePad">
 
-            <button class="move-btn up">
+            <button class="move-btn up" data-direction="up">
                 <img src="website/MovementBtnUp.png">
             </button>
 
-            <button class="move-btn left">
+            <button class="move-btn left" data-direction="left">
                 <img src="website/MovementBtnLeft.png">
             </button>
 
@@ -32,11 +34,11 @@
                 <img src="website/MovementBtnCenter.png">
             </button>
 
-            <button class="move-btn right">
+            <button class="move-btn right" data-direction="right">
                 <img src="website/MovementBtnRight.png">
             </button>
 
-            <button class="move-btn down">
+            <button class="move-btn down" data-direction="down">
                 <img src="website/MovementBtnDown.png">
             </button>
 
@@ -66,10 +68,12 @@
 
         let charName;
         let charImg;
+        let charId;
 
         window.addEventListener("DOMContentLoaded", () => {
 
             const params = new URLSearchParams(window.location.search);
+            charId = params.get('variableId');
             charName = params.get('variableName');
             charImg = params.get('variableImage');
 
@@ -88,17 +92,19 @@
 
         function sendData(data) {
 
-            const payload = {
+            const playload = {
                 playerName: charName,
-                ...data,
-                timestamp: Date.now()
+                ...data,   // 🔥 展開物件
             };
 
-            push(ref(db, "User"), payload);
+            update(ref(db, "User"+playerName), playload);
 
-            console.log("Sent to Firebase:", payload);
+            console.log("Sent to Firebase:", playload);
         }
-
+        function MoveDirection(direction) {
+            sendData({ direction });
+            console.log("Move " + direction);
+        }
         document.querySelectorAll(".move-btn")
             .forEach(btn => {
                 btn.addEventListener("click", () => {
