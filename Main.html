@@ -181,15 +181,13 @@
         b
       };
 
-      push(ref(db, "User/" + playerId), Player);
+      set(ref(db, "User/" + playerId), Player);
 
       console.log("Sent to Firebase:", Player);
 
 
       window.location.href =
-        `https://lostarchen.github.io/characterController.html?variableId=${playerId}
-            &variableName=${playerName}
-            &variableImage=${myImage.src}`;
+        `https://lostarchen.github.io/characterController.html?variableId=${playerId}&variableName=${playerName}&variableImage=${myImage.src}`;
 
     }
 
