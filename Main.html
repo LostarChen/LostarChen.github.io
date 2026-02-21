@@ -180,7 +180,7 @@
             b:b,
           };
         
-          push(ref(db, "User/"+playerName), Player);
+          update(ref(db, "User/"+playerId), Player);
         
           console.log("Sent to Firebase:", Player);
         
