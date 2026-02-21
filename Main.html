@@ -1,197 +1,199 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Saros</title>
-    <link rel="stylesheet" href="css/main.css">
+  <title>Saros</title>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-    <div class="backgroundImg">
+  <div class="backgroundImg">
 
-        <img src="website/SAROS Banner.png" width="80%">
+    <img src="website/SAROS Banner.png" width="80%">
 
-        <div class="button-container">
-            <button class="button-setting home-btn"></button>
-            <button class="button-setting story-btn"></button>
-        </div>
-        <br>
-
-        <article id="storyArticle">
-            <h2>Story</h2>
-            <br>
-            <p align="center" width="50%">
-                In the distant future,<br>
-                mankind and technology have progressed far beyond our understanding.<br>
-                Earth is now an advanced utopia governed by an entity known as The System.<br>
-                Humans live in harmony and information can be obtained from anywhere.<br>
-                The world is peaceful. The world is orderly.<br>
-                Despite this, the world is cold.<br><br>
-
-                Every corner of society has been shaped to fit The System’s needs,<br>
-                working to ensure the world continues to function the same way for centuries to come.<br>
-                There is little room for connection and expression among individuals.<br><br>
-
-                A group of engineers develop a program in hopes of solving this issue:<br>
-                A virtual world named SAROS that exists outside of The System’s reach,<br>
-                free for all humans to visit and explore.<br><br>
-
-                In SAROS, anyone can meet and interact without outside control.<br>
-                All is temporary and there are no expectations for the future.<br><br>
-            </p>
-
-        </article>
-
-        <article id="myArticle">
-            <br>
-            <br>
-            <label for="playerName">Player Name:</label>
-            <input type="text" id="playerName" placeholder="Enter player name">
-            <br>
-
-            <label for="colorPicker">Select a color:</label>
-            <input type="color" id="colorPicker" name="colorPicker" value="#FFFFFF">
-            <br>
-            <br>
-            <div class="image-row">
-                <button class="arrow-btn">
-                    <img src="website/LastPage.png">
-                </button>
-            
-                <img id="myImage" src="character/new/IronCabinet.png" width="500" height="500">
-            
-                <button class="arrow-btn">
-                    <img src="website/NextPage.png">
-                </button>
-            </div>
-            <br>
-
-            <button class="start-btn">
-              <img src="website/Start.png">
-            </button>
-        </article>
+    <div class="button-container">
+      <button class="button-setting home-btn"></button>
+      <button class="button-setting story-btn"></button>
     </div>
+    <br>
 
-    <script type="module">
+    <article id="storyArticle">
+      <h2>Story</h2>
+      <br>
+      <p align="center" width="50%">
+        In the distant future,<br>
+        mankind and technology have progressed far beyond our understanding.<br>
+        Earth is now an advanced utopia governed by an entity known as The System.<br>
+        Humans live in harmony and information can be obtained from anywhere.<br>
+        The world is peaceful. The world is orderly.<br>
+        Despite this, the world is cold.<br><br>
 
-        import { initializeApp } from 
-          "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        
-        import { getDatabase, ref, push,update } from 
-          "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-        
-        
-        // 🔹 Firebase 設定（已修正）
-        const firebaseConfig = {
-          apiKey: "AIzaSyC1Kjr3cvMNQAQLdQhn5JKOXmKZ59KUp1s",
-          authDomain: "saros-a89e0.firebaseapp.com",
-          databaseURL: "https://saros-a89e0-default-rtdb.firebaseio.com/",
-          projectId: "saros-a89e0",
-        };
-        
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        
-        
-        // ========================
-        // 文章切換
-        // ========================
-        
-        const storyArticle = document.getElementById("storyArticle");
-        const myArticle = document.getElementById("myArticle");
-        
-        const defaulttxt = myArticle.innerHTML;
-        const storytxt = storyArticle.innerHTML;
-        
-        storyArticle.innerHTML = "";
-        
-        function changeArticleContent(type){
-          switch(type){
-            case "story":
-              myArticle.innerHTML = storytxt;
-              break;
-            case "home":
-              myArticle.innerHTML = defaulttxt;
-              break;
-          }
-        }
-        
-        // 綁定按鈕
-        document.querySelector(".home-btn")
-          .addEventListener("click", () => changeArticleContent("home"));
-        
-        document.querySelector(".story-btn")
-          .addEventListener("click", () => changeArticleContent("story"));
-        
-        
-        // ========================
-        // 角色圖片切換
-        // ========================
-        
-        const images = [
-          "character/new/IronCabinet.png",
-          "character/new/Kirby.png",
-          "character/new/Sad-Face.png",
-          "character/new/Satellite.png",
-          "character/new/Ship.png",
-          "character/new/Triangle.png",
-          "character/new/UFO.png"
-        ];
-        
-        let currentImage = 0;
-        const myImage = document.getElementById("myImage");
-        
-        document.querySelector(".arrow-btn:first-child")
-          .addEventListener("click", () => {
-            currentImage = (currentImage - 1 + images.length) % images.length;
-            myImage.src = images[currentImage];
-          });
-        
-        document.querySelector(".arrow-btn:last-child")
-          .addEventListener("click", () => {
-            currentImage = (currentImage + 1) % images.length;
-            myImage.src = images[currentImage];
-          });
-        
-        
-        // ========================
-        // 送出玩家資料
-        // ========================
-        const startBtn = document.querySelector(".start-btn");
-        startBtn.addEventListener("click", sendPlayerInfo);
-        
-        function sendPlayerInfo(){
-        
-          
-          const playerName = document.getElementById("playerName").value;
-          const playerId = Date.now().toString();
-          const selectedColor = document.getElementById("colorPicker").value;
-        
-          const hexColor = selectedColor.substring(1);
-          const r = parseInt(hexColor.substring(0,2),16);
-          const g = parseInt(hexColor.substring(2,4),16);
-          const b = parseInt(hexColor.substring(4,6),16);
-        
-          const Player = {
-            playerId: playerId,
-            playerName:playerName,
-            charImg: myImage.src,
-            r:r,
-            g:g,
-            b:b,
-          };
-        
-          update(ref(db, "User/"+playerId), Player);
-        
-          console.log("Sent to Firebase:", Player);
-        
-          
-          window.location.href =
-            `https://lostarchen.github.io/characterController.html?variableId=${playerId}
+        Every corner of society has been shaped to fit The System’s needs,<br>
+        working to ensure the world continues to function the same way for centuries to come.<br>
+        There is little room for connection and expression among individuals.<br><br>
+
+        A group of engineers develop a program in hopes of solving this issue:<br>
+        A virtual world named SAROS that exists outside of The System’s reach,<br>
+        free for all humans to visit and explore.<br><br>
+
+        In SAROS, anyone can meet and interact without outside control.<br>
+        All is temporary and there are no expectations for the future.<br><br>
+      </p>
+
+    </article>
+
+    <article id="myArticle">
+      <br>
+      <br>
+      <label for="playerName">Player Name:</label>
+      <input type="text" id="playerName" placeholder="Enter player name">
+      <br>
+
+      <label for="colorPicker">Select a color:</label>
+      <input type="color" id="colorPicker" name="colorPicker" value="#FFFFFF">
+      <br>
+      <br>
+      <div class="image-row">
+        <button class="arrow-btn">
+          <img src="website/LastPage.png">
+        </button>
+
+        <img id="myImage" src="character/new/IronCabinet.png" width="500" height="500">
+
+        <button class="arrow-btn">
+          <img src="website/NextPage.png">
+        </button>
+      </div>
+      <br>
+
+      <button class="start-btn">
+        <img src="website/Start.png">
+      </button>
+    </article>
+  </div>
+
+  <script type="module">
+
+    import { initializeApp } from
+      "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+    import { getDatabase, ref, push, update } from
+      "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+
+    // 🔹 Firebase 設定（已修正）
+    const firebaseConfig = {
+      apiKey: "AIzaSyC1Kjr3cvMNQAQLdQhn5JKOXmKZ59KUp1s",
+      authDomain: "saros-a89e0.firebaseapp.com",
+      databaseURL: "https://saros-a89e0-default-rtdb.firebaseio.com/",
+      projectId: "saros-a89e0",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+
+    // ========================
+    // 文章切換
+    // ========================
+
+    const storyArticle = document.getElementById("storyArticle");
+    const myArticle = document.getElementById("myArticle");
+
+    const defaulttxt = myArticle.innerHTML;
+    const storytxt = storyArticle.innerHTML;
+
+    storyArticle.innerHTML = "";
+
+    function changeArticleContent(type) {
+      switch (type) {
+        case "story":
+          myArticle.innerHTML = storytxt;
+          break;
+        case "home":
+          myArticle.innerHTML = defaulttxt;
+          break;
+      }
+    }
+
+    // 綁定按鈕
+    document.querySelector(".home-btn")
+      .addEventListener("click", () => changeArticleContent("home"));
+
+    document.querySelector(".story-btn")
+      .addEventListener("click", () => changeArticleContent("story"));
+
+
+    // ========================
+    // 角色圖片切換
+    // ========================
+
+    const images = [
+      "character/new/IronCabinet.png",
+      "character/new/Kirby.png",
+      "character/new/Sad-Face.png",
+      "character/new/Satellite.png",
+      "character/new/Ship.png",
+      "character/new/Triangle.png",
+      "character/new/UFO.png"
+    ];
+
+    let currentImage = 0;
+    const myImage = document.getElementById("myImage");
+
+    document.querySelector(".arrow-btn:first-child")
+      .addEventListener("click", () => {
+        currentImage = (currentImage - 1 + images.length) % images.length;
+        myImage.src = images[currentImage];
+      });
+
+    document.querySelector(".arrow-btn:last-child")
+      .addEventListener("click", () => {
+        currentImage = (currentImage + 1) % images.length;
+        myImage.src = images[currentImage];
+      });
+
+
+    // ========================
+    // 送出玩家資料
+    // ========================
+    const startBtn = document.querySelector(".start-btn");
+    startBtn.addEventListener("click", sendPlayerInfo);
+
+    function sendPlayerInfo() {
+
+
+      const playerName = document.getElementById("playerName").value;
+      const playerId = Date.now() + "_" + crypto.randomUUID();
+      const selectedColor = document.getElementById("colorPicker").value;
+
+      const hexColor = selectedColor.substring(1);
+      const r = parseInt(hexColor.substring(0, 2), 16);
+      const g = parseInt(hexColor.substring(2, 4), 16);
+      const b = parseInt(hexColor.substring(4, 6), 16);
+
+      const Player = {
+        playerId,
+        playerName,
+        charImg: myImage.src,
+        r,
+        g,
+        b
+      };
+
+      update(ref(db, "User/" + playerId), Player);
+
+      console.log("Sent to Firebase:", Player);
+
+
+      window.location.href =
+        `https://lostarchen.github.io/characterController.html?variableId=${playerId}
             &variableName=${playerName}
             &variableImage=${myImage.src}`;
-            
-        }
-        
-        </script>
+
+    }
+
+  </script>
 </body>
+
 </html>
