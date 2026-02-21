@@ -77,7 +77,7 @@
     import { initializeApp } from
       "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 
-    import { getDatabase, ref, push,set } from
+    import { getDatabase, ref, push, set } from
       "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
 
@@ -160,7 +160,7 @@
     const startBtn = document.querySelector(".start-btn");
     startBtn.addEventListener("click", sendPlayerInfo);
 
-    function sendPlayerInfo() {
+    async function sendPlayerInfo() {
 
 
       const playerName = document.getElementById("playerName").value;
@@ -173,22 +173,31 @@
       const b = parseInt(hexColor.substring(4, 6), 16);
 
       const Player = {
-        playerId,
-        playerName,
+        playerId: playerId,
+        playerName: playerName,
         charImg: myImage.src,
-        r,
-        g,
-        b
+        r: r,
+        g: g,
+        b: b
       };
 
       set(ref(db, "User/" + playerId), Player);
 
       console.log("Sent to Firebase:", Player);
+      try {
 
+        // 🔥 等寫入完成
+        await set(ref(db, "User/" + playerId), Player);
 
-      window.location.href =
-        `https://lostarchen.github.io/characterController.html?variableId=${playerId}&variableName=${playerName}&variableImage=${myImage.src}`;
+        console.log("Data written!");
 
+        // ✅ 寫完才跳頁
+        window.location.href =
+          `https://lostarchen.github.io/characterController.html?variableId=${playerId}&variableName=${playerName}&variableImage=${myImage.src}`;
+
+      } catch (error) {
+        console.error("Write failed:", error);
+      }
     }
 
   </script>

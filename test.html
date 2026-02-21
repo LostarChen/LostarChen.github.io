@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Firebase Test</title>
+</head>
+
+<body>
+
+  <button id="testBtn">Write To Firebase</button>
+
+  <script type="module">
+
+    import { initializeApp } from
+      "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+    import { getDatabase, ref, set } from
+      "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "你的APIKEY",
+      authDomain: "saros-a89e0.firebaseapp.com",
+      databaseURL: "https://saros-a89e0-default-rtdb.firebaseio.com/",
+      projectId: "saros-a89e0",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const btn = document.getElementById("testBtn");
+
+    btn.addEventListener("click", async () => {
+      try {
+        await set(ref(db, "test123"), {
+          hello: "world",
+          time: Date.now()
+        });
+
+        console.log("✅ Data written successfully");
+        alert("Write success");
+
+      } catch (error) {
+        console.error("❌ Write failed:", error);
+        alert("Write failed. Check console.");
+      }
+    });
+
+  </script>
+
+</body>
+</html>
