@@ -181,7 +181,7 @@
         b
       };
 
-      update(ref(db, "User/" + playerId), Player);
+      push(ref(db, "User/" + playerId), Player);
 
       console.log("Sent to Firebase:", Player);
 
