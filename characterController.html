@@ -97,7 +97,7 @@
                 ...data,   // 🔥 展開物件
             };
 
-            update(ref(db, "User"+playerName), playload);
+            update(ref(db, "User"+charId), playload);
 
             console.log("Sent to Firebase:", playload);
         }
