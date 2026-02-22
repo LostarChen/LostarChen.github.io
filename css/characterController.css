@@ -86,7 +86,7 @@ button {
 .movePad {
     position: relative;
     width: 40%;      /* 整個方向鍵大小 */
-    height: 80%;
+    aspect-ratio: 1 / 1;   /* 🔥 讓它永遠正方形 */
     margin: 0 auto;
 }
 .move-btn {
@@ -135,26 +135,26 @@ button {
 }
 
 .Controller{
-	margin-top: 200px;
+	margin-top:  20vh;
 	position: relative;
 	width: 100%;      /* 整個方向鍵大小 */
-    height:100%;
+    height:50vw;
 }
 .stampBtn img{
 	position: absolute;
-	top: 40%;
+	top: 45%;
     left: 30%;
-	width:10%;
+	width: 10vw;
 }
 .shootBtn img{
 	position: absolute;
-	top: 40%;
+	top: 45%;
 	right:30%;
-	width:10%;
+	width: 10vw;
 }
 .LineBtn {
     position: absolute;
-    top:65%;          /* 距離底部 */
+    top:80%;          /* 距離底部 */
     left: 50%;           /* 先移到中間 */
     transform: translateX(-50%);  /* 再往左拉回一半 */
 }
