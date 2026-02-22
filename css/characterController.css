@@ -61,15 +61,7 @@ button {
     width: 20%;      /* 用百分比 */
     z-index: 10;           /* 在上面 */
 }
-.LineBtn {
-    position: absolute;
-    top:85%;          /* 距離底部 */
-    left: 50%;           /* 先移到中間 */
-    transform: translateX(-50%);  /* 再往左拉回一半 */
-}
-.LineBtn img {
-    width: 20vw;
-}
+
 
 .button-container button {
 	margin: 0px 50px 0px;
@@ -109,53 +101,63 @@ button {
 }
 .up {
 	width:25%;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -170%);
 }
 
 .down {
 	width:25%;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, 75%);
 }
 
 .left {
 	width:25%;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-170%, -50%);
 }
 
 .right {
 	width:25%;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(75%, -50%);
 }
 
 .center {
 	width:40%;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .Controller{
+	margin-top: 200px;
 	position: relative;
 	width: 100%;      /* 整個方向鍵大小 */
     height:100%;
 }
 .stampBtn img{
 	position: absolute;
-	top: 60%;
+	top: 40%;
     left: 30%;
 	width:10%;
 }
 .shootBtn img{
 	position: absolute;
-	top: 60%;
+	top: 40%;
 	right:30%;
 	width:10%;
+}
+.LineBtn {
+    position: absolute;
+    top:65%;          /* 距離底部 */
+    left: 50%;           /* 先移到中間 */
+    transform: translateX(-50%);  /* 再往左拉回一半 */
+}
+.LineBtn img {
+    width: 20vw;
 }
