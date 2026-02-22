@@ -43,7 +43,7 @@ img{
 /* 玩家名稱 */
 .player-name {
     position: absolute;
-    font-size: 2vw;
+    font-size: clamp(28px, 2vw, 50px);
     top: 15%;
     left: 20%;
     color: black;
@@ -52,7 +52,7 @@ img{
 /* 分數 */
 .score {
     position: absolute;
-    font-size: 2vw;
+    font-size: clamp(28px, 2vw, 50px);
     top: 23%;
     left: 24%;
     color: black;
