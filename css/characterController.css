@@ -142,12 +142,12 @@ button {
 	width: 100%;      /* 整個方向鍵大小 */
     height:100%;
 }
-.stampBtn{
+.stampBtn img{
 	position: absolute;
 	bottom: 8%;
     left: 8%;
 }
-.shootBtn{
+.shootBtn img{
 	position: absolute;
 	bottom: 8%;
 	right: 8%;

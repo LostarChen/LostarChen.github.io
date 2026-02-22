@@ -43,8 +43,8 @@
             </button>
 
         </div>
-        <img class="stampBtn" src="website/Stamp Btn.png">
-        <img class="shootBtn" src="website/ShootBtn.png">
+        <button class="stampBtn"><img src="website/Stamp Btn.png"></button>
+        <button class="shootBtn"><img src="website/ShootBtn.png"></button>
     </div>
     <button class="LineBtn"><img class="LineBtnImg" src="website/LineBtn.png"></button>
 
@@ -112,23 +112,27 @@
                 });
             });
 
-        document.getElementById("shootBtn")
+        document.querySelector(".shootBtn")
             .addEventListener("click", BulletShooting);
-
+        let isShooting = false;
         function BulletShooting() {
-            sendData({ bullet: true });
+            isShooting = !isShooting;
+            sendData({ bullet: isShooting });
         };
 
-        document.getElementById("stampBtn")
+        document.querySelector(".stampBtn")
             .addEventListener("click", Stamp);
-
+        let isStamp = false;
         function Stamp() {
-            sendData({ stamp: true });
+            isStamp = !isStamp;
+            sendData({ stamp: isStamp });
         };
-        document.getElementById("LineBtn")
+        let isDrawing = false;
+        document.querySelector(".LineBtn")
             .addEventListener("click", Drawing);
         function Drawing() {
-            sendData({ draw: true });
+            isDrawing = !isDrawing;
+            sendData({ draw: isDrawing });
         };
 
     </script>
