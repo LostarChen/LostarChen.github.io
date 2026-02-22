@@ -1,94 +1,79 @@
 html,
 body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 body {
-	background-image: url("../website/Starry sky.jpg");
-	background-attachment: fixed;
-	background-size: cover;
-	background-color: #000000;
-	text-align: center;
-	touch-action: manipulation;
+    background-image: url("../website/Starry sky.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #000000;
+    text-align: center;
+    touch-action: manipulation;
 }
 
-div {
-	padding: 0px;
+/* ========================= */
+/* 介面上半部 */
+/* ========================= */
+
+.InterfaceWrapper {
+    position: relative;
+    width: 100%;
 }
 
-img {
-	cursor: default;
-}
-
-area {
-	cursor: pointer;
-}
-
-button {
-	background: transparent;
-	border: none;
-	padding: 0;
-	cursor: pointer;
-}
-.InterfaceWrapper{
-	position: relative;
-	width:100%;
-}
 .imgInterface {
-	display: block;
-	width:100%;
+    display: block;
+    width: 100%;
 }
+
+/* 玩家名稱 */
 .player-name {
-	position: absolute;
-	font-size: 3vw;
-	top: 14%;
-	left:20%;
-	color: black;
+    position: absolute;
+    font-size: clamp(30px, 5vw, 60px);
+    top: 15%;
+    left: 20%;
+    color: black;
 }
-.score{
-	position: absolute;
-	font-size: 3vw;
-	top:19%;
-	left:24%;
-	color:black;
+
+/* 分數 */
+.score {
+    position: absolute;
+    font-size: clamp(30px, 5vw, 60px);
+    top: 23%;
+    left: 24%;
+    color: black;
 }
+
+/* 角色圖 */
 .charImg {
-    position: absolute;   /* 關鍵 */
-    top: 10%;        /* 用百分比 */
-    right: 5%;      /* 用百分比 */
-    width: 20%;      /* 用百分比 */
-    z-index: 10;           /* 在上面 */
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 20%;
+    z-index: 10;
 }
 
+/* ========================= */
+/* 控制區 */
+/* ========================= */
 
-.button-container button {
-	margin: 0px 50px 0px;
-	padding: 40px 200px 40px;
-	font-size: 16px;
+.Controller {
+    position: relative;
+    width: 100%;
+    margin-top: 5vh;   /* 改成視窗高度 */
 }
 
-.button-setting {
-	background-image: url("../website/websiteUI_button.png");
-	background-size: cover;
-	border-radius: 20px;
-}
-
-.color-but {
-	border: 1px;
-	height: 50px;
-	width: 50px;
-	cursor: pointer;
-}
-
-
+/* 方向鍵容器 */
 .movePad {
     position: relative;
-    width: 40%;      /* 整個方向鍵大小 */
-    aspect-ratio: 1 / 1;   /* 🔥 讓它永遠正方形 */
+    width: 50vw;           /* 隨畫面寬度 */
+    aspect-ratio: 1 / 1;   /* 固定正方形 */
     margin: 0 auto;
 }
+
+/* 所有方向鍵 */
 .move-btn {
     position: absolute;
     background: transparent;
@@ -97,67 +82,74 @@ button {
 }
 
 .move-btn img {
-    width:100%;
+    width: 100%;
 }
+
+/* 方向鍵位置 */
 .up {
-	width:25%;
-    top: 30%;
+    width: 30%;
+    top: 0%;
     left: 50%;
-    transform: translate(-50%, -170%);
+    transform: translate(-50%, 0);
 }
 
 .down {
-	width:25%;
-    top: 30%;
+    width: 30%;
+    bottom: 0%;
     left: 50%;
-    transform: translate(-50%, 75%);
+    transform: translate(-50%, 0);
 }
 
 .left {
-	width:25%;
-    top: 30%;
-    left: 50%;
-    transform: translate(-170%, -50%);
+    width: 30%;
+    left: 0%;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 
 .right {
-	width:25%;
-    top: 30%;
-    left: 50%;
-    transform: translate(75%, -50%);
+    width: 30%;
+    right: 0%;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 
 .center {
-	width:40%;
-    top: 30%;
+    width: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.Controller{
-	margin-top:  20vh;
-	position: relative;
-	width: 100%;      /* 整個方向鍵大小 */
-    height:50vw;
+/* ========================= */
+/* 左右按鈕 */
+/* ========================= */
+
+.stampBtn img {
+    position: absolute;
+    top: 70%;
+    left: 25%;
+    width: 15vw;
 }
-.stampBtn img{
-	position: absolute;
-	top: 45%;
-    left: 30%;
-	width: 10vw;
+
+.shootBtn img {
+    position: absolute;
+    top: 70%;
+    right: 25%;
+    width: 15vw;
 }
-.shootBtn img{
-	position: absolute;
-	top: 45%;
-	right:30%;
-	width: 10vw;
-}
+
+/* ========================= */
+/* 底部 Line 按鈕 */
+/* ========================= */
+
 .LineBtn {
     position: absolute;
-    top:80%;          /* 距離底部 */
-    left: 50%;           /* 先移到中間 */
-    transform: translateX(-50%);  /* 再往左拉回一半 */
+    top: 120%;  
+    left: 50%;
+    transform: translateX(-50%);
 }
+
 .LineBtn img {
-    width: 20vw;
+    width: 25vw;
 }
