@@ -145,10 +145,12 @@ button {
 .stampBtn img{
 	position: absolute;
 	bottom: 8%;
-    left: 8%;
+    left: 30%;
+	width:10%;
 }
 .shootBtn img{
 	position: absolute;
 	bottom: 8%;
-	right: 8%;
+	right:30%;
+	width:10%;
 }
