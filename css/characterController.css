@@ -13,6 +13,18 @@ body {
     text-align: center;
     touch-action: manipulation;
 }
+button {
+    all: unset;              /* 🔥 完全清除預設樣式 */
+    cursor: pointer;
+}
+
+button img {
+    display: block;          /* 移除底下白色空隙 */
+}
+
+img{
+	display: block;
+}
 
 /* ========================= */
 /* 介面上半部 */
