@@ -124,14 +124,20 @@ body {
 /* ========================= */
 /* 左右按鈕 */
 /* ========================= */
-
+.stampBtn{
+	background: transparent;
+	background-color: #000000;
+}
 .stampBtn img {
     position: absolute;
     top: 70%;
     left: 25%;
     width: 15vw;
 }
-
+.shootBtn{
+	background: transparent;
+	background-color: #000000;
+}
 .shootBtn img {
     position: absolute;
     top: 70%;
@@ -144,6 +150,7 @@ body {
 /* ========================= */
 
 .LineBtn {
+	background: transparent;
     position: absolute;
     top: 120%;  
     left: 50%;
