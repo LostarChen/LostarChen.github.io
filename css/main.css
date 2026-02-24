@@ -57,6 +57,11 @@ img{
 	-webkit-touch-callout: none;
 	background:transparent;
 }
+.charImg
+{
+	width:20%;
+	height: auto;
+}
 .image-row{
 	display: flex;
 	align-items: center;   /* 垂直置中 */
